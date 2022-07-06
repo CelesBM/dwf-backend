@@ -1,7 +1,7 @@
 import { Router } from "@vaadin/router";
 
 class Home extends HTMLElement {
-
+    shadow: ShadowRoot;
     constructor() {
       super();
       this.render()
