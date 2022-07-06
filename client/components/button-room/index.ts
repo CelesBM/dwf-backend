@@ -13,6 +13,13 @@ class ButtonRoom extends HTMLElement {
            
         style.innerHTML = `
         .root{
+            font-family: 'Luckiest Guy', cursive;
+            font-size: 27px;
+            color: #D8FCFC;
+            background-color: #006CFC;
+            border: 7px solid #001997;
+            border-radius: 10px;
+            padding: 3px 41px;
         }
         `
         button.textContent = this.textContent;

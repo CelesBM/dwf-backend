@@ -11,9 +11,10 @@ class Home extends HTMLElement {
         const shadow = this.attachShadow({mode: 'open'});
         shadow.innerHTML=`
     <div class="container">
+        
         <h1 class="title">Piedra Papel ó Tijera</h1>
-         <button-new>Nuevo Juego</button-new>
-         <button-room>Ingresar a una sala</button-room>
+         <button-new class="new">Nuevo Juego</button-new>
+         <button-room class="room">Ingresar a una sala</button-room>
         <div class="container-hands">
             <hands-comp hand="rock"></hands-comp>
             <hands-comp hand="paper"></hands-comp>
@@ -26,20 +27,34 @@ class Home extends HTMLElement {
         style.innerHTML=
         `
         .container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         } 
+        .title{
+            font-family: 'Indie Flower', cursive;
+            font-size: 80px;
+            color: #009048;
+            line-height: 100px;
+            text-align: center;
+            margin-top: 40px;
+        }
+        .new{
+            margin-bottom: 10px;
+        }
         `
     shadow.appendChild(style)
 
-    const buttonNewEl = shadow.getElementById("button-new")
-    buttonNewEl.addEventListener("click", ()=>{
-    Router.go("new-game")
-    })
+   // const buttonNewEl = shadow.querySelector("new")
+   // buttonNewEl.addEventListener("click", ()=>{
+   // Router.go("new-game")
+   // })
 
-    const buttonRoomEl = shadow.getElementById("button-room")
-    buttonRoomEl.addEventListener("click", ()=>{
-    Router.go("code-room")
-    })
-    }
+   // const buttonRoomEl = shadow.querySelector("room")
+   // buttonRoomEl.addEventListener("click", ()=>{
+   // Router.go("code-room")
+   // })
+ }
 
 
   }
