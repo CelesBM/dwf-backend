@@ -1,7 +1,7 @@
 const hands = {
 	rock: require("url:../../images/piedra.png"),
 	paper: require("url:../../images/papel.png"),
-	scissor: require("url:../../images/tijeras.png"),
+    scissor: require("url:../../images/tijeras.png"),
 };
 
     class Hand extends HTMLElement {
@@ -21,6 +21,11 @@ const hands = {
                 height: 138px;
                 width: 66px;
             }
+            @media (min-width: 769px) {
+                .hand{        
+                    height: 170px;
+                    width: 70px;;
+            }}
             `;
 
             div.innerHTML = `

@@ -2,6 +2,8 @@ import "./components/button-new";
 import "./components/button-room";
 import "./components/hands";
 import "./pages/home";
+import "./pages/new-game";
+import "./pages/code-room"
 import "./router";
 import { Router } from "@vaadin/router";
 

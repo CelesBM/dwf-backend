@@ -1,21 +1,24 @@
 import { Router } from "@vaadin/router";
 
-class Home extends HTMLElement {
+class NewGame extends HTMLElement {
     shadow: ShadowRoot;
 
     constructor() {
       super();
       this.render()
     }
-  
+
     render(){
         const shadow = this.attachShadow({mode: 'open'});
-        
+
         shadow.innerHTML=`
     <div class="container">
         <h1 class="title">Piedra Papel ó Tijera</h1>
-          <button-new class="new">Nuevo Juego</button-new>
-          <button-room class="room">Ingresar a una sala</button-room>
+        <form>
+          <label for="name" class="name">Tu Nombre</label>
+          <input type="text" id="name" name="user_name" class="input">
+          <button-new class="new">Empezar</button-new>
+        </form>    
         <div class="container-hands">
           <hands-comp class="hand" hand="rock"></hands-comp>
           <hands-comp class="hand" hand="paper"></hands-comp>
@@ -30,7 +33,7 @@ class Home extends HTMLElement {
             display: flex;
             flex-direction: column;
             align-items: center;
-        } 
+            }
         .title{
             font-family: 'Indie Flower', cursive;
             font-size: 80px;
@@ -38,34 +41,46 @@ class Home extends HTMLElement {
             line-height: 100px;
             text-align: center;
             margin-top: 40px;
-        }
+            margin-bottom: 30px;
+            }
                 @media (min-width: 769px){
                 .title{
-                 margin-top: 5%;
-                 margin-bottom: -10px;
+                margin-top: 5%;
+                margin-bottom: 92px;
                 }}
-        .new{
-            margin-bottom: 10px;
+        form{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-                @media (min-width: 769px) {
-                .new{
-                margin-top: 9%;
-                margin-bottom: 40px
-                }}
+        .name{
+            font-family: 'Odibee Sans', cursive;
+            font-size: 35px;
+        }
+        .input{
+            height: 40px;
+            width: 265px;
+            font-family: 'Luckiest Guy', cursive;
+            font-size: 27px;
+            border: 7px solid #001997;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
         .container-hands{
             display: flex;
-            top: 100px;
+            top: 86px;
             position: relative;
             margin: -15px 60px
-        }
+            }
                 @media (min-width: 769px) {
                 .container-hands{        
-                top: 130px;
+                top: 157px;
                 margin: 0px 600px
                 }}
         .hand{
             margin: 0px 20px;
-        }
+            }
                 @media (min-width: 769px) {
                 .hand{        
                 margin: 0px 100px;
@@ -74,16 +89,7 @@ class Home extends HTMLElement {
 
     shadow.appendChild(style)
 
-    const buttonNewEl = shadow.querySelector(".new")
-    buttonNewEl.addEventListener("click", ()=>{
-        Router.go("new-game")
-    });
-
-    const buttonRoomEl = shadow.querySelector(".room")
-    buttonRoomEl.addEventListener("click", ()=>{
-        Router.go("code-room")
-    })
+         }
     }
-  }
-  
-  customElements.define("home-comp", Home);
+
+customElements.define("newgame-comp", NewGame);

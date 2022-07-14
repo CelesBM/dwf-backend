@@ -1,21 +1,24 @@
 import { Router } from "@vaadin/router";
 
-class Home extends HTMLElement {
+class CodeRoom extends HTMLElement {
     shadow: ShadowRoot;
 
     constructor() {
       super();
       this.render()
     }
-  
+
     render(){
         const shadow = this.attachShadow({mode: 'open'});
-        
+
         shadow.innerHTML=`
+
     <div class="container">
         <h1 class="title">Piedra Papel ó Tijera</h1>
-          <button-new class="new">Nuevo Juego</button-new>
-          <button-room class="room">Ingresar a una sala</button-room>
+        <form>
+          <input type="text" id="code" name="user_code" class="input" placeholder="Ingresa tu código">
+          <button-room class="room">Ingresar a la sala</button-room>
+        </form>    
         <div class="container-hands">
           <hands-comp class="hand" hand="rock"></hands-comp>
           <hands-comp class="hand" hand="paper"></hands-comp>
@@ -30,7 +33,7 @@ class Home extends HTMLElement {
             display: flex;
             flex-direction: column;
             align-items: center;
-        } 
+            }
         .title{
             font-family: 'Indie Flower', cursive;
             font-size: 80px;
@@ -38,34 +41,46 @@ class Home extends HTMLElement {
             line-height: 100px;
             text-align: center;
             margin-top: 40px;
-        }
+            margin-bottom: 30px;
+            }
                 @media (min-width: 769px){
                 .title{
-                 margin-top: 5%;
-                 margin-bottom: -10px;
+                    margin-top: 5%;
+                    margin-bottom: 125px;
                 }}
-        .new{
+        form{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            }
+        .input{
+            height: 40px;
+            width: 294px;
+            font-family: 'Luckiest Guy', cursive;
+            font-size: 27px;
+            border: 7px solid #001997;
+            border-radius: 10px;
             margin-bottom: 10px;
-        }
-                @media (min-width: 769px) {
-                .new{
-                margin-top: 9%;
-                margin-bottom: 40px
+            text-align: center;
+            }
+            @media (min-width: 769px){
+                .input{
+                    margin-bottom: 35px;
                 }}
         .container-hands{
             display: flex;
-            top: 100px;
+            top: 125px;
             position: relative;
             margin: -15px 60px
-        }
+            }
                 @media (min-width: 769px) {
                 .container-hands{        
-                top: 130px;
+                top: 138px;
                 margin: 0px 600px
                 }}
         .hand{
             margin: 0px 20px;
-        }
+            }
                 @media (min-width: 769px) {
                 .hand{        
                 margin: 0px 100px;
@@ -73,17 +88,7 @@ class Home extends HTMLElement {
         `;
 
     shadow.appendChild(style)
-
-    const buttonNewEl = shadow.querySelector(".new")
-    buttonNewEl.addEventListener("click", ()=>{
-        Router.go("new-game")
-    });
-
-    const buttonRoomEl = shadow.querySelector(".room")
-    buttonRoomEl.addEventListener("click", ()=>{
-        Router.go("code-room")
-    })
+         }
     }
-  }
-  
-  customElements.define("home-comp", Home);
+
+customElements.define("coderoom-comp", CodeRoom);
