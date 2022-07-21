@@ -1,4 +1,5 @@
 import { Router } from "@vaadin/router";
+import { state } from "../../state";
 
 class NewGame extends HTMLElement {
     shadow: ShadowRoot;
@@ -6,6 +7,10 @@ class NewGame extends HTMLElement {
     constructor() {
       super();
       this.render()
+    }
+
+    randomNumber(min, max) {
+        return Math.floor(Math.random() * (max - min)) + min;
     }
 
     render(){
@@ -87,9 +92,24 @@ class NewGame extends HTMLElement {
                 }};
         `;
 
-    shadow.appendChild(style)
+    shadow.appendChild(style);
 
-         }
+    const buttonEl = shadow.querySelector(".new");
+    const formEl = shadow.querySelector("form");
+    const inputEl = shadow.querySelector("input");
+    
+    formEl.addEventListener("submit", (e)=>{
+        e.preventDefault();
+        const userName = inputEl.value;
+        const randomNumber = this.randomNumber(1000,9999);
+        state.setUser(userName).then(()=>{
+            const user = state.getState().users.name;
+            state.createNewRoom(randomNumber, user).then(()=>{
+                Router.go("share-code");
+            })
+        })
+    })
     }
+}
 
 customElements.define("newgame-comp", NewGame);
